@@ -1,5 +1,6 @@
 package tradition150;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,5 +51,21 @@ public class ValidAnagram242 {
         }
 
         return true;
+    }
+
+    /**
+     * Solution 2
+     * Sort and compare
+     * Time Complexity: O(nlog(n))
+     * @param s
+     * @param t
+     * @return
+     */
+    public boolean isAnagram2(String s, String t) {
+        char[] sCharArray = s.toCharArray();
+        char[] tCharArray = t.toCharArray();
+        Arrays.sort(sCharArray);
+        Arrays.sort(tCharArray);
+        return Arrays.equals(sCharArray, tCharArray);
     }
 }
