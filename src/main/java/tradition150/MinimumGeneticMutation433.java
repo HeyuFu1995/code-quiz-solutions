@@ -30,28 +30,36 @@ public class MinimumGeneticMutation433 {
             }
         };
 
-        return backtrack(startGene, endGene, bankSet);
+        return dfs(startGene, startGene, endGene, bankSet);
     }
 
-    private int backtrack(String currentGene, String endGene, Set<String> bankSet) {
+    private int dfs(String preGene, String currentGene, String endGene, Set<String> bankSet) {
         int result = Integer.MAX_VALUE;
-        for(int i = 0; i < currentGene.length(); i++) {
-            if(currentGene.charAt(i) != endGene.charAt(i)) {
-                String tempGene = currentGene;
-                StringBuilder builder = new StringBuilder(currentGene);
-                builder.setCharAt(i, endGene.charAt(i));
-                if(bankSet.contains(builder.toString())) {
-                    if (endGene.contentEquals(builder)) {
-                        return 1;
-                    }
-                    int subResult = backtrack(builder.toString(), endGene, bankSet);
-                    if(subResult != -1) {
-                        result = Math.min(result, subResult + 1);
-                    }
+        if(currentGene.equals(endGene)) {
+            return 0;
+        }
+        for(String s: bankSet) {
+            if(compareTwoStringsGetDifferentCharNumber(s, currentGene) == 1 && !s.equals(preGene)) {
+                int subResult = dfs(currentGene ,s, endGene, bankSet);
+                if(subResult != -1) {
+                    result = Math.min(subResult + 1, result);
                 }
-                currentGene = tempGene;
             }
         }
+
         return result == Integer.MAX_VALUE ? -1 : result;
+    }
+
+    private int compareTwoStringsGetDifferentCharNumber(String a, String b) {
+        if(a.length() != b.length()) {
+            return -1;
+        }
+        int num = 0;
+        for(int i = 0; i < a.length(); i++) {
+            if(a.charAt(i) != b.charAt(i)) {
+                num++;
+            }
+        }
+        return num;
     }
 }
