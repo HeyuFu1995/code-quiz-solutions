@@ -30,17 +30,19 @@ public class MinimumGeneticMutation433 {
             }
         };
 
-        return dfs(startGene, startGene, endGene, bankSet);
+        return dfs(startGene, endGene, bankSet);
     }
 
-    private int dfs(String preGene, String currentGene, String endGene, Set<String> bankSet) {
+    private int dfs(String currentGene, String endGene, Set<String> bankSet) {
         int result = Integer.MAX_VALUE;
         if(currentGene.equals(endGene)) {
             return 0;
         }
         for(String s: bankSet) {
-            if(compareTwoStringsGetDifferentCharNumber(s, currentGene) == 1 && !s.equals(preGene)) {
-                int subResult = dfs(currentGene ,s, endGene, bankSet);
+            if(compareTwoStringsGetDifferentCharNumber(s, currentGene) == 1) {
+                Set<String> newBankSet = new HashSet<>(bankSet);
+                newBankSet.remove(s);
+                int subResult = dfs(s, endGene, newBankSet);
                 if(subResult != -1) {
                     result = Math.min(subResult + 1, result);
                 }
