@@ -94,7 +94,7 @@ public class ReverseLinkedListII92 {
         ListNode next;
         //First sign cur.next value to next
         //then which value was signed change which pointer until next value has been signed
-        for(int i = 0; i < right - left + 1; i++) {
+        for(int i = 0; i < right - left; i++) {
             //1 pointer next -> cur.next
             next = cur.next;
             //2 cur.next -> next.next
