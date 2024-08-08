@@ -73,4 +73,39 @@ public class ReverseLinkedListII92 {
     }
 
 
+    /**
+     * Solution 2
+     * Time Complexity : O(n)
+     * Space Complexity: O(1)
+     * @param head
+     * @param left
+     * @param right
+     * @return
+     */
+    public ListNode reverseBetween2(ListNode head, int left, int right) {
+        ListNode dummyNode = new ListNode(-1);
+        dummyNode.next = head;
+        ListNode pre = dummyNode;
+
+        for(int i = 0; i < left - 1; i++) {
+            pre = pre.next;
+        }
+        ListNode cur = pre.next;
+        ListNode next;
+        //First sign cur.next value to next
+        //then which value was signed change which pointer until next value has been signed
+        for(int i = 0; i < right - left + 1; i++) {
+            //1 pointer next -> cur.next
+            next = cur.next;
+            //2 cur.next -> next.next
+            cur.next = next.next;
+            //3 next.next -> pre.next
+            next.next = pre.next;
+            //4 pre.next -> next
+            pre.next = next;
+        }
+
+        return dummyNode.next;
+    }
+
 }
