@@ -75,5 +75,38 @@ public class RotateArray189 {
         }
     }
 
+    /**
+     * Solution 4
+     * loop substitute
+     * Time Complexity: O(n)
+     * Space Complexity: O(1)
+     * @param nums
+     * @param k
+     */
+    public void rotate4(int[] nums, int k) {
+        int n = nums.length;
+        k %= n;
+        int loopCount = gcd(k, n);
+        //The gcd of k and nums.length indicates how many loops in the iteration
+        //For replace all the numbers in the array, must go through every loop
+        for(int start = 0; start < loopCount; start++) {
+            //For each loop, replace the number with k % n number before.
+            int current = start;
+            int prev = nums[start];
+            do{
+                int next = (current + k) % n;
+                int temp = nums[next];
+                nums[next] = prev;
+                prev = temp;
+                current = next;
+            } while (start != current);
+
+        }
+    }
+
+    private int gcd(int x, int y) {
+        return y > 0 ? gcd(y, x % y) : x;
+    }
+
 
 }
