@@ -30,4 +30,24 @@ public class JumpGame55 {
         return reachable[length - 1];
     }
 
+    /**
+     * Solutuion 2
+     * Time Complexity: O(n)
+     * @param nums
+     * @return
+     */
+    public boolean canJump2(int[] nums) {
+        int length = nums.length;
+        int rightMost = 0;
+
+        for(int i = 0; i < length; i++) {
+            if (i <= rightMost) {
+                rightMost = Math.max(rightMost, i + nums[i]);
+            }
+            if(rightMost >= length - 1) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
