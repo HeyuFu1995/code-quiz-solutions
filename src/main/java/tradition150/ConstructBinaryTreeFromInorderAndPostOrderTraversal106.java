@@ -27,8 +27,8 @@ public class ConstructBinaryTreeFromInorderAndPostOrderTraversal106 {
         static int[] postorder = {9,15,7,20,3};
     }
 
-    public static void main(String... args) {
-       new ConstructBinaryTreeFromInorderAndPostOrderTraversal106().buildTree(TestCase.inorder, TestCase.postorder);
+    public static void solution() {
+
     }
 
     int postIndex;
