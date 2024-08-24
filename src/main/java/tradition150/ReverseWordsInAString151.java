@@ -47,10 +47,6 @@ public class ReverseWordsInAString151 {
         return String.join(" ", wordList);
     }
 
-    public static void main(String[] args) {
-        new ReverseWordsInAString151().reverseWords3("t ");
-    }
-
     /**
      * Solution 3
      * @param s
