@@ -1,5 +1,8 @@
 package tradition150;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class LinkedListCycle141 {
 
     class ListNode {
@@ -29,6 +32,24 @@ public class LinkedListCycle141 {
             slow = slow.next;
         } while (fast != slow);
         return true;
+    }
+
+    /**
+     * Solution 2
+     * Time Complexity: O(n)
+     * @param head
+     * @return
+     */
+    public boolean hasCycle2(ListNode head) {
+        Set<ListNode> set = new HashSet<>();
+        while(head != null) {
+            if(set.contains(head)) {
+                return true;
+            }
+            set.add(head);
+            head = head.next;
+        }
+        return false;
     }
 
 
