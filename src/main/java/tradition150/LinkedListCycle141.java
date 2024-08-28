@@ -15,6 +15,15 @@ public class LinkedListCycle141 {
         }
     }
 
+    private class TestCase {
+
+    }
+
+    public static void solution() {
+
+
+    }
+
     /**
      * Solution
      * Time Complexity: O(n)
