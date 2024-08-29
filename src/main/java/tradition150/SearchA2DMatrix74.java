@@ -41,4 +41,30 @@ public class SearchA2DMatrix74 {
         }
         return target == matrix[row][column];
     }
+
+    /**
+     * Solution 2
+     * Time Complexity: O(log(m * n))
+     * @param matrix
+     * @param target
+     * @return
+     */
+    public boolean searchMatrix2(int[][] matrix, int target) {
+        int length = matrix.length;
+        int width = matrix[0].length;
+        int low = 0;
+        int high = length * width - 1;
+        while(low <= high) {
+            int mid = (high - low) / 2 + low;
+            int x = matrix[mid / width][mid % width];
+            if(x < target) {
+                low = mid + 1;
+            } else if(x > target) {
+                high = mid - 1;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
 }
