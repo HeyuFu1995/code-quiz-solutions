@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class SimplifyPath71 {
     private class TestCase {
-        static String path = "/.../a/../b/c/../d/./"
+        static String path = "/.../a/../b/c/../d/./";
     }
 
     public static void solution() {
