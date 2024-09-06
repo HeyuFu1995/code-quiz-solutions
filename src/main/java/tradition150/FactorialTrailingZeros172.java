@@ -25,4 +25,19 @@ public class FactorialTrailingZeros172 {
         }
         return ans;
     }
+
+    /**
+     * Solution
+     * Time Complexity: O(log(n))
+     * @param n
+     * @return
+     */
+    public int trailingZeroes2(int n) {
+        int ans = 0;
+        while(n != 0) {
+            n /= 5;
+            ans += n;
+        }
+        return ans;
+    }
 }
