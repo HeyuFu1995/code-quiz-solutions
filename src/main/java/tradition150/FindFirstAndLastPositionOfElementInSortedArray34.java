@@ -34,4 +34,39 @@ public class FindFirstAndLastPositionOfElementInSortedArray34 {
         end = isTarget ? nums.length - 1: end;
         return new int[]{start, end};
     }
+
+
+    /**
+     * Solution 2
+     * Time Complexity: O(log n)
+     * @param nums
+     * @param target
+     * @return
+     */
+    public int[] searchRange2(int[] nums, int target) {
+        int start = binarySearch(nums, target, true);
+        if(start == nums.length) {
+            return  new int[] {-1, -1};
+        }
+        int end = binarySearch(nums, target, false);
+        return new int[]{start, end};
+    }
+
+    private int binarySearch(int[] nums, int target, boolean lower) {
+        int left = 0;
+        int right = nums.length - 1;
+        int ans = nums.length;
+        while(left <= right) {
+            int mid = (left + right) / 2;
+            if(nums[mid] == target){
+                ans = mid;
+            }
+            if(nums[mid] > target || (lower && nums[mid] == target)) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return ans;
+    }
 }
