@@ -52,4 +52,34 @@ public class GenerateParentheses22 {
         }
         return balance == 0;
     }
+
+    /**
+     * Solution 2
+     * Time Complexity: O(4 ^ n / sqrt(n))
+     * @param n
+     * @return
+     */
+    public List<String> generateParenthesis2(int n) {
+        List<String> combinations = new ArrayList<>();
+        StringBuilder builder = new StringBuilder();
+        backtrack(builder, 0,0, combinations, n);
+        return combinations;
+    }
+
+    private void backtrack(StringBuilder builder, int open, int close, List<String> results, int n) {
+        if(builder.length() == 2 * n) {
+            results.add(builder.toString());
+            return;
+        }
+        if(open < n) {
+            builder.append('(');
+            backtrack(builder, open + 1, close, results, n);
+            builder.deleteCharAt(builder.length() - 1);
+        }
+        if(close < open) {
+            builder.append(')');
+            backtrack(builder, open, close + 1, results, n);
+            builder.deleteCharAt(builder.length() - 1);
+        }
+    }
 }
