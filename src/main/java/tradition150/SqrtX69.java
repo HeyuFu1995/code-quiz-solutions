@@ -30,4 +30,18 @@ public class SqrtX69 {
         }
         return ans;
     }
+
+    /**
+     * Solution 2
+     * Time Complexity: O(1)
+     * @param x
+     * @return
+     */
+    public int mySqrt2(int x) {
+        if(x == 0) {
+            return 0;
+        }
+        int ans = (int) Math.exp(0.5 * Math.log(x));
+        return (ans + 1) * (ans + 1) <= x ? ans + 1 : ans;
+    }
 }
